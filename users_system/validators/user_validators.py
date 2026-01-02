@@ -1,11 +1,11 @@
 import re
 
-from exceptions import (
+from users_system.exceptions.exceptions import (
     UsernameAlreadyExistsError,
     InvalidEmailError,
     InvalidUsernameFormatError,
 )
-from usernames_registry import UsernamesRegistry
+from users_system.models.usernames_registry import UsernamesRegistry
 
 
 class EmailValidator:

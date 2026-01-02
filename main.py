@@ -1,7 +1,11 @@
-from user_validators import EmailValidator, UsernameFormatValidator
-from exceptions import BaseUsersProgramException
-from user import UserService, User, Admin
-from usernames_registry import UsernamesRegistry
+from users_system.validators.user_validators import (
+    EmailValidator,
+    UsernameFormatValidator,
+)
+from users_system.exceptions.exceptions import BaseUsersProgramException
+from users_system.models.user import UserService, User
+from users_system.models.admin import Admin
+from users_system.models.usernames_registry import UsernamesRegistry
 
 usernames_registry = UsernamesRegistry()
 username_format_validator = UsernameFormatValidator(usernames_registry)

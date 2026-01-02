@@ -1,4 +1,7 @@
-from user_validators import EmailValidator, UsernameFormatValidator
+from users_system.validators.user_validators import (
+    EmailValidator,
+    UsernameFormatValidator,
+)
 from enum import Enum
 
 
@@ -36,33 +39,3 @@ class User:
 
     def login(self):
         return f"User {self.username} is logged in"
-
-
-class RegularUser(User):
-    def __init__(
-        self,
-        username: str,
-        email: str,
-        membership_level: MembershipLevel,
-        user_service: UserService,
-    ):
-        super().__init__(username, email, user_service)
-        self.membership_level = membership_level
-
-    def get_info(self) -> str:
-        return (
-            super().get_info()
-            + f" user`s membership level is {self.membership_level.value}"
-        )
-
-
-class Admin(User):
-    def __init__(self, username: str, email: str, user_service: UserService):
-        super().__init__(username, email, user_service)
-        self.role = UserRoles.ADMIN
-
-    def delete_user(self):
-        return f"Admin {self.username} deleted user."
-
-    def get_info(self):
-        return super().get_info() + f" user is {self.role.value}"
