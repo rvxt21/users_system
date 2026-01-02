@@ -1,2 +1,3 @@
 class UsernamesRegistry:
-    usernames: set = set()
+    def __init__(self):
+        self.usernames: set = set()
