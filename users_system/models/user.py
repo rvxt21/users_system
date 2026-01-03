@@ -2,6 +2,7 @@ from users_system.validators.user_validators import (
     EmailValidator,
     UsernameFormatValidator,
 )
+from .usernames_registry import UsernamesRegistry
 from enum import Enum
 
 
@@ -14,21 +15,13 @@ class UserRoles(Enum):
     ADMIN = "admin"
 
 
-class UserService:
-    def __init__(
-        self,
-        username_validator: UsernameFormatValidator,
-        email_validator: EmailValidator,
-    ):
-        self.username_validator = username_validator
-        self.email_validator = email_validator
-
-
 class User:
-    def __init__(self, username: str, email: str, user_service: UserService):
-        self.user_service = user_service
-        self.user_service.username_validator.register_username(username)
-        self.user_service.email_validator.validate_email(email)
+    def __init__(self, username: str, email: str):
+        self.email_validator = EmailValidator(email)
+        self.username_validator = UsernameFormatValidator(username)
+        self.username_validator.validate()
+        self.email_validator.validate()
+        UsernamesRegistry().register_username(username)
         self.username = username
         self.email = email
 

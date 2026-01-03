@@ -1,9 +1,9 @@
-from .user import User, UserService, UserRoles
+from .user import User, UserRoles
 
 
 class Admin(User):
-    def __init__(self, username: str, email: str, user_service: UserService):
-        super().__init__(username, email, user_service)
+    def __init__(self, username: str, email: str):
+        super().__init__(username, email)
         self.role = UserRoles.ADMIN
 
     def delete_user(self):

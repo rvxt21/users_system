@@ -1,4 +1,4 @@
-from .user import User, MembershipLevel, UserService
+from .user import User, MembershipLevel
 
 
 class RegularUser(User):
@@ -7,9 +7,11 @@ class RegularUser(User):
         username: str,
         email: str,
         membership_level: MembershipLevel,
-        user_service: UserService,
     ):
-        super().__init__(username, email, user_service)
+        super().__init__(
+            username,
+            email,
+        )
         self.membership_level = membership_level
 
     def get_info(self) -> str:
