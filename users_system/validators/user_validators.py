@@ -1,6 +1,6 @@
 import re
 
-from users_system.exceptions.exceptions import (
+from users_system.exceptions import (
     UsernameAlreadyExistsError,
     InvalidEmailError,
     InvalidUsernameFormatError,
